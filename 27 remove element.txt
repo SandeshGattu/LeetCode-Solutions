@@ -1,0 +1,21 @@
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        k=nums.count(val)
+        print(k)
+        l1=0
+        s1=0
+        m1=len(nums)
+        for i in range(m1):
+            if nums[l1]==val:
+                nums.pop(l1)
+                nums.append(val)
+                s1+=1
+            else:
+                l1+=1
+            if s1==k:break
+        print(nums)
+                
+                
+        return m1-k
+                
+        

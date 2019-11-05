@@ -1,0 +1,27 @@
+class Solution:
+    def minimumSwap(self, s1: str, s2: str) -> int:
+        if len(s1)!=len(s2):
+            return -1
+        if s1==s2:
+            return 0
+        l=list(s1)
+        m=list(s2)
+        k=0
+        for i in range(len(s1)):
+            if s1[i]==s2[i]:
+                l.pop(i-k)
+                m.pop(i-k)
+                k+=1
+        a=l.count('x')
+        b=m.count('x')
+        c=l.count('y')
+        d=m.count('y')
+        print(a,b,c,d,l,m)
+        if (a+c)%2==1 or (b+d)%2==1:
+            return -1
+        if a==0 or b==0:
+            return len(l)//2
+        return (a//2+b//2+(a-(2*(a//2)))+(b-(2*(b//2))))
+            
+        
+        

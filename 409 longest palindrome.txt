@@ -1,0 +1,24 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> int:
+        l= [i for i in s]
+        p=set(l)
+        c=[0 for i in p]
+        l2=0
+        m1=0
+        count,flag=0,0
+        for i in p:
+            c[l2] = l.count(i)
+            if c[l2]%2==0:
+                count+=c[l2]
+                
+            else:
+                count+=c[l2]-1
+                flag=1
+            l2+=1
+        count+=flag
+        
+        return count
+            
+            
+            
+        

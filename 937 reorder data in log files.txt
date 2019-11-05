@@ -1,0 +1,12 @@
+class Solution(object):
+    def reorderLogFiles(self, logs):
+        """
+        :type logs: List[str]
+        :rtype: List[str]
+        """
+        A, B, G = [], [], [i.split() for i in logs]
+    	for g in G:
+    		if g[1].isnumeric(): B.append(g)
+    		else: A.append(g)
+    	return [" ".join(i) for i in sorted(A, key = lambda x: x[1:]+[x[0]]) + B]
+        

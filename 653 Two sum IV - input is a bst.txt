@@ -1,0 +1,29 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def findTarget(self, root: TreeNode, k: int) -> bool:
+        
+        res={}
+        flag=0
+        def traverse(root):
+            nonlocal flag
+            if flag==1:
+                return
+            if root:
+                if k-root.val in res:
+                    #print(k,root.val,res)
+                    flag=1
+                else:
+                    res[root.val]=(root.val)
+                traverse(root.left)
+                traverse(root.right)
+        traverse(root)
+        if flag==1:
+            return True
+        return False
+        

@@ -1,0 +1,29 @@
+class Solution(object):
+    def customSortString(self, S, T):
+        """
+        :type S: str
+        :type T: str
+        :rtype: str
+        """
+        l=list(S)
+        m=list(T)
+        k=[]
+        for i in l:
+            if i in m:
+                k.append(i)
+                ind=m.index(i)
+                m.pop(ind)
+        
+        for i in m:
+            if i in k:
+                ind=k.index(i)
+                k.insert(ind,i)
+            else:
+                k.append(i)
+        rest=""
+        for i in k:
+            rest+=str(i)
+        
+        return rest
+        
+        

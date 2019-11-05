@@ -1,0 +1,17 @@
+class Solution(object):
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        c=float("-inf")
+        d=0
+        
+        for i in nums:
+            d=d+i
+            if c<d:
+                c=d
+            if d<0:
+                d=0
+        return c
+        

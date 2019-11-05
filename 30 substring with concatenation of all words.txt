@@ -1,0 +1,41 @@
+
+class Solution(object):
+    def findSubstring(self, s, words):
+        """
+        :type s: str
+        :type words: List[str]
+        :rtype: List[int]
+        """
+        l=len(s)
+        result=[]
+        if l==0:
+            return result
+        if len(words)==0:
+            return result
+        m=(len(words))*len(words[0])
+        lw1=len(words[0])
+        if lw1==0:
+            return result
+        
+        
+        
+        for i in range(l-m+1):
+            test=s[i:i+m]
+            
+            k =[]
+            k=k+words
+            for j in range(len(words)):
+                #print(test[j*lw1:(j+1)*lw1])
+                if test[j*lw1:(j+1)*lw1] in k:
+                    ind=k.index(test[j*lw1:(j+1)*lw1])
+                    k.pop(ind)
+                    #print(test[j*lw1:(j+1)*lw1])
+                else:
+                    #print("hii")
+                    break
+            if len(k)==0:
+                result.append(i)
+        return result
+                
+        
+        

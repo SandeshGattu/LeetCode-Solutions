@@ -1,0 +1,12 @@
+import string
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        
+        s1=s.lower()
+        
+        s3=[i for i in s1 if i in string.ascii_lowercase or i.isdigit()]
+        
+        if s3==s3[::-1]:
+            return True
+        else:
+            return False

@@ -1,0 +1,28 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+import sys
+class Solution:
+    
+    
+    
+    def isValidBST(self, root: TreeNode) -> bool:
+        max1=float("inf")
+        min1=float("-inf")
+        def findbst(root,m1,m2):
+            
+            if root is None:
+                return True
+            elif root.val<m1 or root.val>m2:
+                print(root.val,m1,m2)
+                return False
+            return (findbst(root.left,m1,root.val-1)) and (findbst(root.right,root.val+1,m2))
+        return findbst(root,min1,max1)
+        
+        
+        
+                
+        

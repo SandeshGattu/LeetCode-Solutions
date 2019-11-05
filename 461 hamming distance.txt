@@ -1,0 +1,26 @@
+class Solution:
+    def hammingDistance(self, x: int, y: int) -> int:
+        i=0
+        j=0
+        while(2**i<=x):
+            i+=1
+        while(2**j<=y):
+            j+=1
+        m=max(i,j)
+        count=0
+        print(i,j,m)
+        for i in range(m):
+            k1=x//2**(m-i)
+            k2=y//2**(m-i)
+            if k1!=k2:
+                count+=1
+            x=x%(2**(m-i))
+            y=y%(2**(m-i))
+            if x==y:
+                return count
+        if x==y:
+                return count
+        else:
+            return count+1
+                
+        

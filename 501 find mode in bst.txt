@@ -1,0 +1,39 @@
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
+class Solution:
+    def findMode(self, root: TreeNode) -> List[int]:
+        l={}
+        m1=float("-inf")
+        m2=float("inf")
+        m3=m1
+        m4=m2
+        def getnode(root,m1,m2):
+            if root is None:
+                return
+            if root.val==m1 or root.val==m2:
+                l[root.val]+=1
+            else:
+                l[root.val]=1
+            getnode(root.left,m1,root.val)
+            getnode(root.right,root.val,m2)
+        
+        getnode(root,m1,m2)
+        if root is None:
+            return []
+        m=1
+        res=[]
+        for i in l.keys():
+            if l[i]==m:
+                res.append(i)
+            elif l[i]>m:
+                m=l[i]
+                res=[]
+                res.append(i)
+                
+        return res
+        

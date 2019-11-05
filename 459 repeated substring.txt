@@ -1,0 +1,15 @@
+class Solution:
+    def repeatedSubstringPattern(self, s: str) -> bool:
+        st=list(s)
+        st1=set(st)
+        if len(st1)==1 and len(st)>1 :
+            return True
+        l=len(st)
+        mid=l//2
+        for i in range(2,mid+1):
+            if l%i==0:
+                sp=s[:i]
+                c1=s.count(sp)
+                if c1==l//i:
+                    return True
+        return False

@@ -1,0 +1,20 @@
+class Solution(object):
+    def longestPalindrome(self, s):
+        """ :type s: str :rtype: str """
+        
+        res=""
+        
+        def getpalind(st:str,l:int,r:int):
+            while(l>=0 and r<len(st) and st[l]==st[r]):
+                l=l-1
+                r=r+1
+            return st[l+1:r]
+        
+        for i in range(len(s)):
+            a1=getpalind(s,i,i)
+            if len(a1)>len(res):
+                res=a1
+            a2=getpalind(s,i,i+1)
+            if len(a2)>len(res):
+                res=a2
+        return res

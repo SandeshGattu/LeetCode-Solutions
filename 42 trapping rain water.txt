@@ -1,0 +1,58 @@
+class Solution:
+    def trap(self, height: List[int]) -> int:
+        
+        
+        d=[]
+        res=0
+        def calc(a):
+            k=0
+            if len(a)<=2:
+                return 0
+            if a[0]==0:
+                return calc(a[1:])
+            if a[-1]==0 or a[-1]<a[-2]:
+                return calc(a[:len(a)-1])
+            else:
+                print(a)
+                b=sorted(a)
+                if (b[-1]==b[-2]) and (a[0]!=a[-1]):
+                    if a[0]!=b[-1]:
+                        ind=a.index(b[-2])
+                    else:
+                        ind=a[1:].index(b[-2])
+                        ind+=1
+                    k+=calc(a[:ind+1])
+                    k+=calc(a[ind:])
+                    
+                elif not((b[-2]==a[0]) or (b[-2]==a[-1])):
+                    print(a)
+                    ind=a.index(b[-2])
+                    k+=calc(a[:ind+1])
+                    k+=calc(a[ind:])
+                else:
+                    m=min(a[0],a[-1])
+                    for i in a:
+                        if m>i:
+                            k+=m-i
+                print(k)
+                return k
+                        
+                        
+        
+        for i in range(len(height)):
+            if len(d)==0:
+                d.append(height[i])
+            else:
+                if height[i]>=d[0]:
+                    d.append(height[i])
+                    res+=calc(d)
+                    print(d)
+                    d=[]
+                    d.append(height[i])
+                else:
+                    d.append(height[i])
+        print(d)
+        res+=calc(d)
+        return res
+                    
+        

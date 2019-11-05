@@ -1,0 +1,11 @@
+class Solution(object):
+    def kClosest(self, points, K):
+        """
+        :type points: List[List[int]]
+        :type K: int
+        :rtype: List[List[int]]
+        """
+        a=[i[0]*i[0]+i[1]*i[1] for i in points]
+        z = [x for _,x in sorted(zip(a,points))]
+        return z[:K]
+        

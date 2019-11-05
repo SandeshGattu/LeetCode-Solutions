@@ -1,0 +1,84 @@
+class Solution:
+    def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
+        m=[]
+        kr=0
+        k2=0
+        l=" "
+        r=0
+        sp=[]
+        lst=0
+        l2=[len(i) for i in words]
+        for i in range(len(words)):
+            if kr+l2[i]<=maxWidth:
+                if k2==0:
+                    sp.append(words[i])
+                    r+=1
+                    k2=1
+                    kr+=l2[i]+1
+                    lst=lst+l2[i]
+                else:
+                    sp.append(words[i])
+                    r+=1
+                    kr+=l2[i]+1
+                    lst=lst+l2[i]
+            else:
+                sm=""
+                
+                h1=0
+                if r==1:
+                    for j in range(lst,maxWidth):
+                        sp[0]=sp[0]+str(" ")
+
+                else:
+                    for j in range(lst,maxWidth):
+                        if h1!=r-1:
+                            sp[h1]=sp[h1]+str(" ")
+                            h1+=1
+                        else:
+                            h1=0
+                            sp[h1]=sp[h1]+str(" ")
+                            h1+=1
+                        
+                    
+                for jk in sp:
+                    sm=sm+str(jk)
+                    
+                m.append(sm)
+                sp=[]
+                k2=1
+                lst=0
+                r=1
+                kr=l2[i]+1
+                lst=lst+l2[i]
+                sp.append(words[i])
+        
+        
+        
+        sm=""
+        
+        if r==1:
+            for j in range(lst,maxWidth):
+                sp[0]=sp[0]+str(" ") 
+        else:
+            print(sp,r,lst,maxWidth)
+            for j in range(r):
+                sp[j]=sp[j]+str(" ")
+                lst+=1
+                if lst==maxWidth:
+                    break
+            print(sp,r,lst,maxWidth)
+         
+            for j in range(lst,maxWidth):
+                sp[-1]=sp[-1]+str(" ")
+                    
+        for jk in sp:
+            sm=sm+str(jk)
+        m.append(sm)
+        for i in m:
+            print(len(i))
+        
+        return m
+            
+                    
+                
+        

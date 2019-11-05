@@ -1,0 +1,33 @@
+"""
+# Definition for a Node.
+class Node:
+    def __init__(self, val, next, random):
+        self.val = val
+        self.next = next
+        self.random = random
+"""
+class Solution:
+    def copyRandomList(self, head: 'Node') -> 'Node':
+        dic={}
+        prev=None
+        a=head
+        while a:
+            
+            if a not in dic:
+                dic[a]=Node(a.val,a.next,a.random)
+            if prev:
+                prev.next=dic[a]
+            else:
+                head=dic[a]
+            
+            if a.random:
+                if a.random not in dic:
+                    
+                    dic[a.random]=Node(a.random.val,a.random.next,a.random.random)
+                dic[a].random=dic[a.random]
+                
+            prev=dic[a]
+            a=a.next
+            
+        return head
+        

@@ -1,0 +1,27 @@
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        res=""
+        i,j,k=0,0,0
+        l1=len(s)
+        l2=len(t)
+        f1=[i for i in s]
+        f2=[i for i in t]
+        f1.sort()
+        f2.sort()
+        # a b c d
+        # a b c d e
+        #i=0 a==a
+        
+        while(i!=(l2-l1) and j!=l1):
+            if f1[j]!=f2[k]:
+                res+=str(f2[k])
+                k+=1
+                i+=1
+            else:
+                j+=1
+                k+=1
+        if i!=(l2-l1):
+            for m in range(k,l2):
+                res+=str(f2[m])
+        return res
+        

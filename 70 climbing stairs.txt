@@ -1,0 +1,13 @@
+class Solution:
+    def climbStairs(self, n: int) -> int:
+        count=0
+        k=n//2
+        print(k)
+        for i in range(k+1):
+                count+=math.factorial(i+n-2*i)/(math.factorial(i)*math.factorial(n-2*i))
+        return int(count)
+            
+                
+                
+                
+        

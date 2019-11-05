@@ -1,0 +1,21 @@
+class Solution(object):
+    def tribonacci(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        t1,t2,t3,t4=0,1,1,1
+        if n==0:
+            return 0
+        elif n<=2:
+            return 1
+        for i in range(3,n+1):
+            t4=t1+t2+t3
+            x=t2
+            y=t3
+            t3=t4
+            t2=y
+            t1=x
+        return t4
+            
+        

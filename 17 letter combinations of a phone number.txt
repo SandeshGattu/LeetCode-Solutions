@@ -1,0 +1,33 @@
+
+class Solution(object):
+    def letterCombinations(self, digits):
+        """
+        :type digits: str
+        :rtype: List[str]
+        """
+        l=[['a','b','c'],['d','e','f'],['g','h','i'],['j','k','l'],['m','n','o'],['p','q','r','s'],['t','u','v'],['w','x','y','z']]
+        m=[]
+        res=[]
+        if len(digits)==0:
+            return res
+        if len(digits)==1:
+            return l[int(digits)-2]
+        d=list(digits)
+        res=[]
+        pl=l[int(digits[0])-2]
+        for i in pl:
+            res.append(i)
+        for c in range(1,len(digits)):
+            a=l[int(digits[c])-2]
+            
+            k=[]
+            for i in res:
+                for j in a:
+                    k.append(str(i)+str(j))
+            
+            res=k
+        return res
+                
+            
+            
+        

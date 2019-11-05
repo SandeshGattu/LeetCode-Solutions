@@ -1,0 +1,10 @@
+class Solution:
+    def uniquePaths(self, m: int, n: int) -> int:
+        a=m+n-2
+        b=min(m,n)
+        r=1
+        k=1
+        for i in range(b-1):
+            r*=(a-i)
+            k*=i+1
+        return r//k

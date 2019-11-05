@@ -1,0 +1,38 @@
+class Solution(object):
+    def findShortestSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        if len(nums)==0:
+            return 0
+        if len(nums)==1:
+            return 1
+        s=list(set(nums))
+        if len(s)==len(nums):
+            return 1
+        c=1
+        e=[]
+        for i in s:
+            co=nums.count(i)
+            if co>c:
+                e=[]
+                e.append(i)
+                #print(i,e)
+                c=co
+            elif co==c:
+                #print(i,e)
+                e.append(i)
+        m=len(nums)
+        k=nums[::-1]
+        for i in e:
+            fi=nums.index(i)
+            sec=k.index(i)
+            sec=len(nums)-1-sec
+            if sec-fi+1<m:
+                #print(sec,fi,i)
+                m=sec-fi+1
+        return m
+                
+                
+        

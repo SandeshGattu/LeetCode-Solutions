@@ -1,0 +1,26 @@
+class Solution(object):
+    def numUniqueEmails(self, emails):
+        """
+        :type emails: List[str]
+        :rtype: int
+        """
+        if len(emails)==0:
+            return 0
+        if len(emails)==1:
+            return 1
+        k=[]
+        for i in emails:
+            m=i.split('@')
+            m2=m[0].split('+')
+            
+            dx=list(m2[0].split('.'))
+            print(dx)
+            h=""
+            for j in dx:
+                h+=str(j)
+            
+            k.append(str(h)+'.'+str(m[1]))
+        
+        m1=list(set(k))
+        return len(m1)
+        

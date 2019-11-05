@@ -1,0 +1,33 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        k=nums
+        i=0
+        if len(nums)==0:
+            return 0
+        if len(nums)==1:
+            return 1
+        i=[]
+        j=[]
+        for a in nums:
+            if a in i:
+                j.append(a)
+            else:
+                i.append(a)
+        b,d=0,0
+        c1,c2=len(i),len(j)
+        for a in range(len(nums)):
+            if a<c1:
+                nums[a]=i[b]
+                b+=1
+            else:
+                nums[a]=j[d]
+                d+=1
+        return c1
+            
+            
+            
+        

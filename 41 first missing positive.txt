@@ -1,0 +1,12 @@
+class Solution:
+    def firstMissingPositive(self, nums: List[int]) -> int:
+        nums.sort()
+        print(nums)
+        if len(nums)==0:
+            return 1
+        st=nums[0]
+        en=nums[-1]
+        for i in range(len(nums)):
+            if i+1 not in nums:
+                return i+1
+        return en+1

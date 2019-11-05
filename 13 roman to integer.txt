@@ -1,0 +1,60 @@
+class Solution:
+    def romanToInt(self, s: str) -> int:
+        p=list(s)
+        p.append("E")
+        result=0
+        while(len(p)!=0):
+            if p[0]=="M":
+                result+=1000
+                p.pop(0)
+            elif p[0]=="C" and p[1]=="M":
+                result+=900
+                p.pop(0)
+                p.pop(0)
+            elif p[0]=="D":
+                p.pop(0)
+                result+=500
+            elif p[0]=="C" and p[1]=="D":
+                p.pop(0)
+                p.pop(0)
+                result+=400
+            elif p[0]=="C":
+                p.pop(0)
+                result+=100
+            elif p[0]=="X" and p[1]=="C":
+                result+=90
+                p.pop(0)
+                p.pop(0)
+            elif p[0]=="L":
+                p.pop(0)
+                result+=50
+            elif p[0]=="X" and p[1]=="L":
+                result+=40
+                p.pop(0)
+                p.pop(0)
+            elif p[0]=="X":
+                p.pop(0)
+                result+=10
+            elif p[0]=="I" and p[1]=="X":
+                p.pop(0)
+                p.pop(0)
+                result+=9
+            elif p[0]=="V":
+                result+=5
+                p.pop(0)
+            elif p[0]=="I" and p[1]=="V":
+                result+=4
+                p.pop(0)
+                p.pop(0)
+            elif p[0]=="I":
+                result+=1
+                p.pop(0)
+            elif(p[0]=="E"):
+                p.pop(0)
+            
+        return result
+    
+            
+        
+        
+        

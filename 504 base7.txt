@@ -1,0 +1,23 @@
+class Solution:
+    def convertToBase7(self, num: int) -> str:
+        i=0
+        sign=""
+        
+        result=""
+        if num<0:
+            result=result+"-"
+            num=-num
+        nu=num
+        while(7**i<=num):
+            i+=1
+            
+        print(i-1)
+        
+        i-=1
+        for j in range(i):
+            k=nu//(7**(i-j))
+            print(k,i,j,nu)
+            result=result+str(k)
+            nu=nu%(7**(i-j))
+        result=result+str(nu)
+        return result
