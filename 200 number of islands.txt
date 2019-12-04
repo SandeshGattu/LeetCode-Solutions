@@ -1,0 +1,29 @@
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        res=0
+        if len(grid)==0:
+            return res
+        if len(grid[0])==0:
+            return res
+        
+        row=len(grid)
+        cols=len(grid[0])
+        def calcdfs(a,i,j):
+            if a[i][j]=='1':
+                a[i][j]=0
+                if i>0:
+                    calcdfs(a,i-1,j)
+                if i<row-1:
+                    calcdfs(a,i+1,j)
+                if j>0:
+                    calcdfs(a,i,j-1)
+                if j<cols-1:
+                    calcdfs(a,i,j+1)
+                    
+        for i in range(row):
+            for j in range(cols):
+                if grid[i][j]=="1":
+                    res+=1
+                    calcdfs(grid,i,j)
+                    
+        return res

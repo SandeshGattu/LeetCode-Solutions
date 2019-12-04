@@ -1,0 +1,45 @@
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        self.boards=board
+        f=False
+        k=list(word)
+        if len(k)==0:
+            return True
+        if len(board)==0:
+            return f
+        if len(board[0])==0:
+            return f
+        r=len(board)
+        c=len(board[0])
+        
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if board[i][j]==k[0] and self.searchdfs(self.boards,i,j,k):
+                    print(self.boards)
+                    return True
+        
+        return f
+    def searchdfs(self,a,i,j,s):
+        if len(s)==0:
+            return True
+            
+        if  not((0<=i<len(a) ) and (0<=j<len(a[0]))):
+            return False
+        if len(s)==1 and a[i][j]==s[0]:
+            return True
+        if  a[i][j]!=s[0] or a[i][j]=="1":
+            return False
+        t=a[i][j]
+        a[i][j]="1"
+        if self.searchdfs(a,i-1,j,s[1:]):
+            return True
+        if self.searchdfs(a,i+1,j,s[1:]):
+            return True
+        if self.searchdfs(a,i,j-1,s[1:]):
+            return True
+        if self.searchdfs(a,i,j+1,s[1:]):
+            return True
+        a[i][j]=t
+        return False
+        
+        

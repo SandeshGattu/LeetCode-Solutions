@@ -1,0 +1,36 @@
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        
+        d=[]
+        if len(matrix)==0:
+            return d
+        if len(matrix[0])==0:
+            return d
+        
+        cs,rs=0,0
+        ce=len(matrix[0])-1
+        re=len(matrix)-1
+        
+        k=min(ce,re)+1
+        for i in range((k+1)//2):
+            #print(rs,re,cs,ce)
+            for j in range(cs,ce+1):
+                #print(d)
+                d.append(matrix[rs][j])
+            
+            for j in range(rs+1,re+1):
+                d.append(matrix[j][ce])
+            if re!=rs:
+                for j in range(ce-1,cs-1,-1):
+                    d.append(matrix[re][j])
+            if ce!=cs:    
+                for j in range(re-1,rs,-1):
+                    d.append(matrix[j][cs])
+                
+            rs+=1
+            cs+=1
+            re-=1
+            ce-=1
+            
+        return d
+        

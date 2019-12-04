@@ -6,37 +6,32 @@
 
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
-        l12=l1
-        l21=l2
-        d=[]
-        while(l12 ):
-            d.append(l12.val)
-            l12=l12.next
-        if len(d)==0:
-            print("nh")
+        
+        if l1 is None:
             return l2
-        kl=len(d)
-        print(d)
-        while(l21):
-            d.append(l21.val)
-            l21=l21.next
-        if len(d)==kl:
-            print("loo")
+        if l2 is None:
             return l1
-        print(d)
-        f=sorted(d)
-        print(f)
-        head=ListNode(f[0])
-        l5=head
-        for i in f[1:]:
-            
-            l6=ListNode(i)
-            l5.next=l6
-            l5=l5.next
-            
-            
-        return head
-            
-            
-                
+        
+        a=ListNode(0)
+        b=a
+        while l1:
+            if l2:
+                if l1.val>l2.val:
+                    n=ListNode(l2.val)
+                    a.next=n
+                    a=a.next
+                    l2=l2.next
+                else:
+                    n=ListNode(l1.val)
+                    a.next=n
+                    a=a.next
+                    l1=l1.next
+            else:
+                a.next=l1
+                a=a.next
+                break
+        if l2:
+            a.next=l2
+            a=a.next
+        return b.next
         

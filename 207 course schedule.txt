@@ -1,0 +1,29 @@
+from collections import defaultdict
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        
+        fr=defaultdict(list)
+        for i in prerequisites:
+            #if i[0] in fr:
+            fr[i[0]].append(i[1])
+        
+        v=[False]*numCourses
+        r=[False]*numCourses
+        def cycle(a,vi,st):
+            vi[a]=True
+            st[a]=True
+            for i in fr[a]:
+                if vi[i]==False:
+                    if cycle(i,vi,st):
+                        return True
+                    
+                elif st[i]==True:
+                    return True
+            st[a]=False
+            return False
+        for i in range(numCourses):
+            if v[i]==False:
+                if cycle(i,v,r):
+                    return False
+        return True
+        

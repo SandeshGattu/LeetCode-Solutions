@@ -1,0 +1,35 @@
+class Solution:
+    def maxAreaOfIsland(self, grid: List[List[int]]) -> int:
+        res=0
+        if len(grid)==0:
+            return res
+        if len(grid[0])==0:
+            return res
+        
+        r=len(grid)
+        c=len(grid[0])
+        
+        def calcdfs(a,i,j):
+            co=0
+            if a[i][j]==1:
+                a[i][j]=0
+                co+=1
+                if i>0:
+                    co+=calcdfs(a,i-1,j)
+                    
+                if i<r-1:
+                    co+=calcdfs(a,i+1,j)
+                if j>0:
+                    co+=calcdfs(a,i,j-1)
+                    
+                if j<c-1:
+                    co+=calcdfs(a,i,j+1)
+            return co
+        
+        for i in range(r):
+            for j in range(c):
+                if grid[i][j]==1:
+                    ca=calcdfs(grid,i,j)
+                    if res<ca:
+                        res=ca
+        return res

@@ -1,0 +1,33 @@
+class Solution:
+    def beforeAndAfterPuzzles(self, phrases: List[str]) -> List[str]:
+        
+        fr={}
+        bc={}
+        for i in range(len(phrases)):
+            
+            k=phrases[i].split(" ")
+            if k[0] in fr:
+                fr[k[0]].append(i)
+            else:
+                fr[k[0]]=[i]
+            if k[-1] in bc:
+                bc[k[-1]].append(i)
+            else:
+                bc[k[-1]]=[i]
+        print(fr,bc)
+        res=[]
+        for i in bc:
+            if i in fr:
+                for a in fr[i]:
+                    for b in bc[i]:
+                        if a!=b:
+                            print(a,b)
+                            st=phrases[b]
+                            print(st,i)
+                            st=st[:len(st)-len(i)]
+                            res.append(st+phrases[a])
+        
+        r=set(res)
+        res=list(r)
+        res.sort()
+        return res
