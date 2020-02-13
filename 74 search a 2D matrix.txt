@@ -1,0 +1,47 @@
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        i,j=0,0
+        a=len(matrix)
+        if a==0:
+            return False
+        b=len(matrix[0])
+        if b==0:
+            return False
+        
+        c=0
+        if matrix[a-1][b-1]<target:
+            return False
+        while c<a+b:
+            print(i,j)
+            if matrix[i][j]>target:
+                return False
+            if matrix[i][j]==target:
+                return True
+            else:
+                if i<a-1 and j<b-1:
+                    if matrix[i+1][j]<=target:
+                        i+=1
+                    elif matrix[i][j+1]<=target:
+                        j+=1
+                    else:
+                        print(i,j)
+                        return False
+                elif i<a-1:
+                    print(i,j)
+                    if matrix[i+1][j]<=target:
+                        i+=1
+                    else:
+                        return False
+                elif j<b-1:
+                    if matrix[i][j+1]<=target:
+                        j+=1
+                    else:
+                        return False
+            c+=1
+        return False
+                    
+                
+            
+        
+            
+        

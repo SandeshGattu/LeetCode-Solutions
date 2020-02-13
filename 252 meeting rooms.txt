@@ -1,0 +1,12 @@
+class Solution:
+    def canAttendMeetings(self, intervals: List[List[int]]) -> bool:
+        intervals.sort(key=lambda x:x[0])
+        merg=[]
+        for i in intervals:
+            if len(merg)==0 or merg[-1][1]<=i[0]:
+                merg.append(i)
+            else:
+                return False
+        return True
+                
+        

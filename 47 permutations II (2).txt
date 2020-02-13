@@ -1,0 +1,15 @@
+class Solution:
+    def permuteUnique(self, nums: List[int]) -> List[List[int]]:
+        nums.sort()
+        res=[]
+        def permut(a,b):
+            if len(a)==len(nums):
+                res.append(a)
+            else:
+                for i in range(len(b)):
+                    if i!=0 and b[i]==b[i-1]:
+                        continue
+                    
+                    permut(a+[b[i]],b[:i]+b[i+1:])
+        permut([],nums)
+        return res

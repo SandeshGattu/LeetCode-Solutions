@@ -1,0 +1,50 @@
+from itertools import permutations
+class Solution:
+    def nextPermutation(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        r=-1
+        for i in range(len(nums)-1,0,-1):
+            if nums[i]>nums[i-1]:
+                r=i-1
+                break
+        print(r)
+        if r==-1:
+            nums.sort()
+            print(nums)
+            return
+        h=nums[r]
+        if r==len(nums)-2:
+            nums[-2]=nums[-1]
+            nums[-1]=h
+            return
+        for i in range(len(nums)-1,r,-1):
+            print(i,r)
+            if h<nums[i]:
+                
+                nums[r]=nums[i]
+                nums[i]=h
+                break
+        w=sorted(nums[r+1:])          
+        print(w)
+        l=0
+        for i in range(r+1,len(nums)):
+            nums[i]=w[i-r-1]
+                
+        
+        
+        
+            
+        
+        
+        
+        
+                    
+                
+        
+                
+            
+        
+        
+        

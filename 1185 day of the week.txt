@@ -1,0 +1,15 @@
+class Solution:
+    def dayOfTheWeek(self, day: int, month: int, year: int) -> str:
+        weeks=["Thursday","Friday","Saturday","Sunday","Monday","Tuesday","Wednesday"]
+        months=[31,28,31,30,31,30,31,31,30,31,30,31]
+        days=(year-1971)*365+((year-1968)//4)
+        if year%4==0:
+            days-=1
+        days+=sum(months[:month-1])
+        days+=day
+        if year%4==0 and month>2:
+            days+=1
+        return weeks[days%7]
+        
+        
+        

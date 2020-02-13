@@ -1,0 +1,40 @@
+class Solution:
+    def getPermutation(self, n: int, k: int) -> str:
+        l=[str(i+1) for i in range(n)]
+        print(l,k)
+        ab={}
+        def gets(a,t,r,m):
+            if t<=0 or  a==[]:
+                return joinb(r,a)
+            d=0
+            l=len(a)-1
+            if l in ab:
+                d=ab[l]
+            else:
+                d=getfact(l)
+                ab[l]=d
+            print(r,m,a,d,t,"hi")
+            if t<=d:
+                
+                r+=a[m]
+                a.pop(m)
+                m=0
+                return gets(a,t,r,m)
+            else:
+                t=t-d
+                m+=1
+                return gets(a,t,r,m)
+                
+            
+                
+        def joinb(b,a):
+            for i in a:
+                b+=i
+            return b
+        def getfact(a):
+            c=1
+            for i in range(a):
+                c=c*(i+1)
+            return c
+        return gets(l,k,"",0)
+        

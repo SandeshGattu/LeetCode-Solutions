@@ -1,0 +1,15 @@
+class Solution:
+    def findErrorNums(self, nums: List[int]) -> List[int]:
+        b=set()
+        n=len(nums)
+        s=(n*(n+1))/2
+        l=0
+        s1=0
+        for i in nums:
+            if i in b:
+                l=i
+            s1+=i
+            b.add(i)
+        k=int(s+l-s1)
+        return [l,k]
+        

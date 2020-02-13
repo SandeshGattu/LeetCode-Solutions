@@ -1,0 +1,27 @@
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        def getpas(rowIndex):
+            a=[]
+            if rowIndex==0:
+                return [1]
+            a.append(1)
+
+            def fact(z):
+                if z==1:
+                    return 1
+                return z*fact(z-1)
+            s={}
+            for i in range(1,rowIndex+1):
+                s[i]=fact(i)
+            #print(s)
+            for i in range(1,rowIndex):
+                m=(s[rowIndex])//((s[rowIndex-i])*(s[i]))
+                a.append(m)
+            a.append(1)
+            return a
+        res=[]
+        for i in range(numRows):
+            res.append(getpas(i))
+        return res
+        
+        

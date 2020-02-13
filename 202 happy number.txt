@@ -1,0 +1,16 @@
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        
+        d=set()
+        while True:
+            a=str(n)
+            k=0
+            for i in a:
+                k+=int(i)**2
+            if k==1:
+                return True
+            n=k
+            if n in d:
+                return False
+            d.add(n)
+        
